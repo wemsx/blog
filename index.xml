@@ -10,7 +10,22 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 01 Sep 2022 15:57:31 +0800</lastBuildDate><atom:link href="http://blog.wemsx.top/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 02 Sep 2022 15:58:29 +0800</lastBuildDate><atom:link href="http://blog.wemsx.top/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>自建api，走起！</title>
+      <link>http://blog.wemsx.top/post/2/</link>
+      <pubDate>Fri, 02 Sep 2022 15:58:29 +0800</pubDate>
+      
+      <guid>http://blog.wemsx.top/post/2/</guid>
+      <description>先放个效果：(假设没问题的话，每次刷新会变)
+具体原理很简单，下面放的就是基本代码
+&amp;lt;?php //初始化随机数生成器种子，这行代码也可以删除 $seed = time(); //获取随机数 $num = rand(1,80); //拼接图片地址 $picpath = &amp;#34;https://gcore.jsdelivr.net/gh/YOUR_NAME/YOUR_REPO/IMAGE_FOLDER/&amp;#34;.$num.&amp;#34;.jpg&amp;#34;; //重定位到图片 die(header(&amp;#34;Location: $picpath&amp;#34;)) 代码来源: 搭建自己的随机图API——DearXuan
+原文建议是全部存Github，然后可以用JSD加速。这是最便宜最好的方案。但今天我尝试的时候发现貌似JSD突然不可用了，反正一直无法获取图片。最后干脆改成raw,githubusercontents.com 。注意这个地方不是github那个打不开的那个raw，后面加了一个s，这是一个开放的加速CDN。按道理来说，任何方式的云储存都可以作为图片储存，前提就是可以直链，可以自定义。而且不建议用付费的云储存，避免出现意外。
+1-80是该文件夹下图片的序号。如果假定刚好有1～80共80张图片，那么就请将所有图片名称改成纯数字.jpg。（不是只能JPG，但不能同时存在多种格式。）
+然后就可以啦！我是在vercel上部署的。当然也可以宝塔。vercel的话还要添加一个额外的 vercel.json。代码如下：
+{ &amp;#34;functions&amp;#34;: { &amp;#34;api/vlts/jpg/*.php&amp;#34;: { &amp;#34;runtime&amp;#34;: &amp;#34;vercel-php@0.4.0&amp;#34; }, &amp;#34;api/vlts/webp/*.php&amp;#34;: { &amp;#34;runtime&amp;#34;: &amp;#34;vercel-php@0.4.0&amp;#34; }, &amp;#34;api/art/*.php&amp;#34;: { &amp;#34;runtime&amp;#34;: &amp;#34;vercel-php@0.4.0&amp;#34; }, &amp;#34;api/zelda/*.php&amp;#34;: { &amp;#34;runtime&amp;#34;: &amp;#34;vercel-php@0.4.0&amp;#34; } }, &amp;#34;routes&amp;#34;: [ { &amp;#34;src&amp;#34;: &amp;#34;/zelda&amp;#34;, &amp;#34;dest&amp;#34;: &amp;#34;/api/zelda/index.php&amp;#34; }, { &amp;#34;src&amp;#34;: &amp;#34;/art&amp;#34;, &amp;#34;dest&amp;#34;: &amp;#34;/api/art/index.php&amp;#34; }, { &amp;#34;src&amp;#34;: &amp;#34;/vlts/jpg&amp;#34;, &amp;#34;dest&amp;#34;: &amp;#34;/api/vlts/jpg/index.php&amp;#34; }, { &amp;#34;src&amp;#34;: &amp;#34;/vlts/webp&amp;#34;, &amp;#34;dest&amp;#34;: &amp;#34;/api/vlts/webp/index.</description>
+    </item>
+    
     <item>
       <title>pvz泳池无尽，我尽力了</title>
       <link>http://blog.wemsx.top/post/1/</link>
